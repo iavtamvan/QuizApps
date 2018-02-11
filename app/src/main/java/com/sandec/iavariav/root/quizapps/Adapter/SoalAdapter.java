@@ -79,6 +79,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
+                radioGroup.getId();
                 Toast.makeText(context, "" + holder.rb_opta.getText().toString().trim(), Toast.LENGTH_SHORT).show();
 //                if (holder.rb_opta.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
 //                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
@@ -139,6 +140,8 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
 //
 //            }
 //        });
+
+
 
 //        holder.rg_rbjawaban.setOnClickListener(new View.OnClickListener() {
 //            @Override
