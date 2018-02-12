@@ -13,7 +13,7 @@ public class Client {
 
 //    private static String BASE_URL = "http://158.69.130.8:92/api/";
 //    private static String BASE_URL = "http://103.82.242.158:803/api/";
-    private static String BASE_URL = "http://192.168.43.57/local/Udinus/";
+    private static String BASE_URL = "http://52.40.249.134/udinus/kuis/";
 //    private static String BASE_URL = "http://suci.can.web.id/ins/";
     private static Retrofit getClient(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

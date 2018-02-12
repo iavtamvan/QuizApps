@@ -28,6 +28,8 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
     List<SoalModel> listSoal;
     String jawabanValidasi;
 
+    ArrayList<String> listJawaban;
+    ArrayList<String> listBenar;
     public SoalAdapter(Context context, ArrayList<SoalModel> listSoal) {
         this.context = context;
         this.listSoal = listSoal;
@@ -78,171 +80,27 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         holder.rg_rbjawaban.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                listBenar = new ArrayList<>();
+                String selectedRadioButtonText;
+                int selectedRadioButtonID = holder.rg_rbjawaban.getCheckedRadioButtonId();
 
-                radioGroup.getId();
-                Toast.makeText(context, "" + holder.rb_opta.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-//                if (holder.rb_opta.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (holder.rb_optb.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (holder.rb_optc.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (holder.rb_optd.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (holder.rb_opte.getText().toString() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                    Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-//                }
+                if (selectedRadioButtonID != 1){
+                    RadioButton selectedRadioButton = radioGroup.findViewById(selectedRadioButtonID);
+                    selectedRadioButtonText = selectedRadioButton.getText().toString().trim();
+                    Toast.makeText(context, "" + selectedRadioButtonText, Toast.LENGTH_SHORT).show();
+                    
+                    if (selectedRadioButtonText.equalsIgnoreCase(holder.tv_jawaban_validasi.getText().toString().trim())){
+                        Toast.makeText(context, "Jawaban Benar", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(context, "Jawaban Salah", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(context, "Pilih  jawaban", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-
-//        holder.rg_rbjawaban.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                if (holder.rb_opta.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                            Toast.makeText(context, "Jawaban Anda Benar" + holder.tv_jawaban_validasi.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-//                }
-////
-////                if (holder.rb_optb.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-////                            Toast.makeText(context, "Jawaban Anda Benar" + holder.tv_jawaban_validasi.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-////                }
-////                else {
-////                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                }
-////                if (holder.rb_optc.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-////                            Toast.makeText(context, "Jawaban Anda Benar" + holder.tv_jawaban_validasi.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-////                }
-////                else {
-////                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                }
-////                if (holder.rb_optd.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-////                            Toast.makeText(context, "Jawaban Anda Benar" + holder.tv_jawaban_validasi.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-////                }
-////                else {
-////                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                }
-////                if (holder.rb_opte.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-////                            Toast.makeText(context, "Jawaban Anda Benar" + holder.tv_jawaban_validasi.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-////                }
-////                else {
-////                    Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                }
-//
-//            }
-//        });
-
-
-
-//        holder.rg_rbjawaban.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                boolean checked = ((RadioButton) view).isChecked();
-//                switch (view.getId()){
-//                    case R.id.rb_opta :
-//                        if (checked){
-////                            validasi();
-//                            if (holder.rb_opta.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                                Toast.makeText(context, "Anda benar", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(context, "Anda salah", Toast.LENGTH_SHORT).show();
-//                            }
-//
-////                            if (holder.tv_jawaban_validasi.getText().toString().equalsIgnoreCase()){
-////                                Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-////                            }
-////                            else {
-////                                Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                            }
-//                            break;
-//                        }
-//                    case R.id.rb_optb :
-//                        if (checked){
-////                            validasi();
-//                            if (holder.rb_optb.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                                Toast.makeText(context, "Anda benar", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(context, "Anda salah", Toast.LENGTH_SHORT).show();
-//                            }
-////                            if (holder.holder.tv_jawaban_validasi.getText().toString().trim() == jawaban){
-////                                Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-////                            }
-////                            else {
-////                                Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                            }
-//                            break;
-//                        }
-//
-//                    case R.id.rb_optc :
-//                        if (checked){
-////                            validasi();
-//                            if (holder.rb_optc.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                                Toast.makeText(context, "Anda benar", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(context, "Anda salah", Toast.LENGTH_SHORT).show();
-//                            }
-////                            if (holder.holder.tv_jawaban_validasi.getText().toString().trim() == jawaban){
-////                                Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-////                            }
-////                            else {
-////                                Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                            }
-//                            break;
-//                        }
-//
-//                    case R.id.rb_optd :
-//                        if (checked){
-////                            validasi();
-//                            if (holder.rb_optd.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                                Toast.makeText(context, "Anda benar", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(context, "Anda salah", Toast.LENGTH_SHORT).show();
-//                            }
-////                            if (holder.holder.tv_jawaban_validasi.getText().toString().trim() == jawaban){
-////                                Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-////                            }
-////                            else {
-////                                Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                            }
-//                            break;
-//                        }
-//
-//                    case R.id.rb_opte :
-//                        if (checked){
-////                            validasi();
-//                            if (holder.rb_opte.getText().toString().trim() == holder.tv_jawaban_validasi.getText().toString().trim()){
-//                                Toast.makeText(context, "Anda benar", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(context, "Anda salah", Toast.LENGTH_SHORT).show();
-//                            }
-////                            if (holder.holder.tv_jawaban_validasi.getText().toString().trim() == jawaban){
-////                                Toast.makeText(context, "Benar", Toast.LENGTH_SHORT).show();
-////                            }
-////                            else {
-////                                Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show();
-////                            }
-//                            break;
-//                        }
-//
-//                }
-//            }
-//        });
-
-
     }
 
     @Override
