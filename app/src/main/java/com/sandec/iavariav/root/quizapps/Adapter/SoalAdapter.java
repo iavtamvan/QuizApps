@@ -196,7 +196,6 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final SoalAdapter.ViewHolder holder, int position) {
         Glide.with(context).load(listSoal.get(position).getIMG())
-                .thumbnail(1f)
                 .error(R.drawable.sandec)
                 .into(holder.ivGambarSoal);
         holder.tvPertanyaan.setText(listSoal.get(position).getPERTANYAAN());
