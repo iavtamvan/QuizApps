@@ -18,6 +18,37 @@ import retrofit2.http.POST;
 public interface ApiService {
     @GET("getsoal.php")
     Call<ArrayList<SoalModel>> getDataSoal();
+
+    @FormUrlEncoded
+    @POST("tambahsoal.php")
+    Call<ResponseBody> postTambahSoal(
+            @Field("PERTANYAAN") String pertanyaan,
+            @Field("OPTA") String opta,
+            @Field("OPTB") String optb,
+            @Field("OPTC") String optc,
+            @Field("OPTD") String optd,
+            @Field("OPTE") String opte,
+            @Field("JAWABAN") String jawaban,
+            @Field("IMG") String img
+    );
+    @FormUrlEncoded
+    @POST("update.php")
+    Call<ResponseBody> updateData(
+            @Field("ID") String id,
+            @Field("PERTANYAAN") String pertanyaan,
+            @Field("OPTA") String opta,
+            @Field("OPTB") String optb,
+            @Field("OPTC") String optc,
+            @Field("OPTD") String optd,
+            @Field("OPTE") String opte,
+            @Field("JAWABAN") String jawaban,
+            @Field("IMG") String img
+    );
+    @FormUrlEncoded
+    @POST("delete.php")
+    Call<ResponseBody> deleteData(
+            @Field("ID") String id
+    );
 //
 //    @GET("DataSampahAPI")
 //    Call<ArrayList<DataSampahModel>> ambilDataSampah();

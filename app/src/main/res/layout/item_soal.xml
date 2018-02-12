@@ -38,30 +38,29 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/rg_rbjawaban"
-                android:onClick="onclickRG">
+                android:id="@+id/rg_rbjawaban">
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Opt A"
                     android:id="@+id/rb_opta"/>
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Opt B"
                     android:id="@+id/rb_optb"/>
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Opt C"
                     android:id="@+id/rb_optc"/>
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Opt D"
                     android:id="@+id/rb_optd"/>
                 <RadioButton
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Opt e"
                     android:id="@+id/rb_opte"/>

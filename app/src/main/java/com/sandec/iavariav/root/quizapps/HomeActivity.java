@@ -3,7 +3,6 @@ package com.sandec.iavariav.root.quizapps;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.sandec.iavariav.root.quizapps.Fragment.SoalFragment;
+import com.sandec.iavariav.root.quizapps.Fragment.TambahSoalFragment;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -90,20 +91,18 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        if (id == R.id.nav_lihat_soal) {
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_fragment,
+                            new SoalFragment()).
+                    commit();
+        } else if (id == R.id.nav_tambah_soal) {
+            fragmentManager.beginTransaction().
+                    replace(R.id.container_fragment,
+                            new TambahSoalFragment()).
+                    commit();
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
