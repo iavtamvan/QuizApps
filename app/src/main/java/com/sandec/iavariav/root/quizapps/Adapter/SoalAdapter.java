@@ -43,9 +43,12 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
     Context context;
     List<SoalModel> listSoal;
 
+    public int[] buttonChecked;
+
     public SoalAdapter(Context context, ArrayList<SoalModel> listSoal) {
         this.context = context;
         this.listSoal = listSoal;
+        buttonChecked = new int[listSoal.size()];
     }
 
     @Override
@@ -134,7 +137,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
                                     ).enqueue(new Callback<ResponseBody>() {
                                         @Override
                                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                            if (response.isSuccessful()){
+                                            if (response.isSuccessful()) {
                                                 try {
                                                     JSONObject jsonObject = new JSONObject(response.body().string());
                                                     String error_msg = jsonObject.optString("error_msg");
@@ -146,6 +149,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
                                                 }
                                             }
                                         }
+
                                         @Override
                                         public void onFailure(Call<ResponseBody> call, Throwable t) {
                                             Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -164,7 +168,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
                                     .enqueue(new Callback<ResponseBody>() {
                                         @Override
                                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                            if (response.isSuccessful()){
+                                            if (response.isSuccessful()) {
                                                 try {
                                                     JSONObject jsonObject = new JSONObject(response.body().string());
                                                     String error_msg = jsonObject.optString("error_msg");
@@ -204,16 +208,29 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         holder.rbOptc.setText(listSoal.get(position).getOPTC());
         holder.rbOptd.setText(listSoal.get(position).getOPTD());
         holder.rbOpte.setText(listSoal.get(position).getOPTE());
+
+        try {
+            holder.rgGroupJawaban.check(buttonChecked[holder.getAdapterPosition()]);
+        }catch (NullPointerException e){
+
+        }
+
         holder.tvJawabanValidasi.setText(listSoal.get(position).getJAWABAN());
         holder.rgGroupJawaban.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                String selectedRadioButtonText;
+                final String selectedRadioButtonText;
                 int selectedRadioButtonID = holder.rgGroupJawaban.getCheckedRadioButtonId();
 
+                buttonChecked[holder.getAdapterPosition()] = selectedRadioButtonID;
+
+                RadioButton selectedRadioButton = radioGroup.findViewById(selectedRadioButtonID);
+                selectedRadioButtonText = selectedRadioButton.getText().toString().trim();
+
                 if (selectedRadioButtonID != 1) {
-                    RadioButton selectedRadioButton = radioGroup.findViewById(selectedRadioButtonID);
-                    selectedRadioButtonText = selectedRadioButton.getText().toString().trim();
+//                    RadioButton selectedRadioButton = radioGroup.findViewById(selectedRadioButtonID);
+//                    selectedRadioButtonText = selectedRadioButton.getText().toString().trim();
+
                     Toast.makeText(context, "" + selectedRadioButtonText, Toast.LENGTH_SHORT).show();
 
                     if (selectedRadioButtonText.equalsIgnoreCase(holder.tvJawabanValidasi.getText().toString().trim())) {
